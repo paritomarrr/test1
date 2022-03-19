@@ -1,0 +1,19 @@
+node1 0x78d4CE220dA4a2a25Ec0b8b75534009Ff4eBe297
+node2 0x918589C79726a3Dec8c21A4c94469789E4037979
+
+inside node1
+geth --datadir ./data init ../gethdemo.json && nde2 separately 
+
+bnode folder
+bootnode -genkey boot.key
+bootnode -nodekey boot.key
+
+enode
+enode://696af557c1c50f2585b18f0b48959db93b918ca9db38d0a578a598aaa0cf46af34cd2d311bbe2db61daf092b815c1cf19bcaba0216b5194dd2c9c2ddef2b2012@127.0.0.1:0?discport=30301
+
+(inside bnode)
+bootnode -nodekey "./boot.key" -verbosity 7 -addr "127.0.0.1:30301"
+
+inside node1
+
+geth --networkid 9898 --datadir "./data" --bootnodes enode://696af557c1c50f2585b18f0b48959db93b918ca9db38d0a578a598aaa0cf46af34cd2d311bbe2db61daf092b815c1cf19bcaba0216b5194dd2c9c2ddef2b2012@127.0.0.1:0?discport=30301 --port 30303 --ipcdisable --syncmode full --http --allow-insecure-unlock --http.corsdomain=* --http.port 8545 --unlock 0x78d4CE220dA4a2a25Ec0b8b75534009Ff4eBe297 --password password.txt --mine console
